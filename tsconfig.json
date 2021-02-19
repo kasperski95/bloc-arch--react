@@ -13,7 +13,8 @@
     "moduleResolution": "node",
     "baseUrl": "./",
     "outDir": "./dist",
-    "declaration": true
+    "declaration": true,
+    "jsx": "preserve"
   },
   "include": ["src"]
 }

@@ -1,12 +1,17 @@
 {
-  "name": "bloc-arch--react",
+  "name": "@bloc-arch/react",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Provides components and utils to use BLoC architecture in React.",
+  "main": "./dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "prepublish": "npm run build"
   },
-  "keywords": [],
+  "keywords": [
+    "bloc",
+    "react"
+  ],
   "author": "Arkadiusz Kasprzyk",
   "license": "MIT",
   "peerDependencies": {
