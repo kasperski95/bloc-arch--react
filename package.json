@@ -4,8 +4,6 @@
   "description": "Provides components and utils to use BLoC architecture in React.",
   "main": "./dist/index.js",
   "scripts": {
-    "update-everything": "npm update && cd e2e && npm update",
-    "install-everything": "npm i && cd e2e && npm i",
     "test": "cd e2e && npm run test",
     "build": "tsc",
     "prepublish": "npm run build"

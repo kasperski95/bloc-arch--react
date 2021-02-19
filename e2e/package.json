@@ -22,7 +22,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test --watchAll=false",
     "eject": "react-scripts eject",
-    "preinstall": "npm run build-bloc-react",
     "build-bloc-react": "cd .. && npm run build && npm pack && cd e2e",
     "update-tested-package": "npm uninstall @bloc-arch/react && npm run build-bloc-react && npm i ../bloc-arch-react*.tgz",
     "bloc": "bloc --typescript --path ./src/blocs"
