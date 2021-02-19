@@ -22,6 +22,7 @@ export function setupBlocs<T extends BlocFactoryFunctions>(blocs: T) {
         </BlocContext.Provider>
       )
     },
+
     /** Instantiates a new bloc if it doesn't exist. */
     useNewBloc: <K extends keyof T>(name: K) => {
       const blocFactoryFn = (React.useContext(BlocContext) as T)[name]
@@ -35,13 +36,21 @@ export function setupBlocs<T extends BlocFactoryFunctions>(blocs: T) {
         []
       )
 
-      return (...args: Parameters<T[K]>) => {
-        if (!memoizedBlocs[name]) memoizedBlocs[name] = blocFactoryFn(args)
-        return memoizedBlocs[name] as ReturnType<T[K]>
-      }
+      return React.useCallback(
+        (...args: Parameters<T[K]>) => {
+          if (!memoizedBlocs[name]) memoizedBlocs[name] = blocFactoryFn(args)
+          return memoizedBlocs[name] as ReturnType<T[K]>
+        },
+        [name, blocFactoryFn]
+      )
     },
+
+    /** Returns a bloc if it was already instantiated by useNewBloc. */
     useBlocGetter: <K extends keyof T>(name: K) => {
-      return () => memoizedBlocs[name] as ReturnType<T[K]> | undefined
+      return React.useCallback(
+        () => memoizedBlocs[name] as ReturnType<T[K]> | undefined,
+        [name]
+      )
     },
   }
 }

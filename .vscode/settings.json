@@ -8,7 +8,12 @@
     "**/node_modules": true,
     "**/package-lock.json": true
   },
-  "cSpell.words": ["Unmount", "browserslist", "preinstall"],
+  "cSpell.words": [
+    "Unmount",
+    "browserslist",
+    "instanceof",
+    "preinstall"
+  ],
   "[typescript]": {
     "editor.codeActionsOnSave": {
       "source.organizeImports": true
