@@ -18,6 +18,10 @@ function App() {
       </button>
       <BlocBuilder
         bloc={getSampleBloc()!}
+        listener={React.useCallback((state: SampleStates.SampleState) => {
+          if (state instanceof SampleStates.NotInitial) {
+          }
+        }, [])}
         renderer={useBlocRenderProp((state) => {
           if (state instanceof SampleStates.NotInitial)
             return <div>not initial state</div>
