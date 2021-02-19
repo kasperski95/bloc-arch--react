@@ -10,9 +10,9 @@ cache:
     - node_modules
     - e2e/node_modules
 before_install:
-  - npm run build
-  - npm run update-everything
+  - npm update
 install:
-  - npm run install-everything
+  - npm install
+  - cd e2e && npm install
 script:
   - npm run test
