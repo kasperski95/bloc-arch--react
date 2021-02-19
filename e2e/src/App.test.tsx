@@ -1,9 +1,24 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { fireEvent, render, screen } from '@testing-library/react'
+import App from './App'
+import { SampleBloc, SampleStates } from './blocs/sample'
+import { BlocProvider } from './blocs/setup-blocs'
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+class SampleBlocMock extends SampleBloc {
+  async *mapEventToState(event: any) {
+    yield new SampleStates.NotInitial()
+  }
+}
+
+test('should handle simple use case', async () => {
+  render(
+    <BlocProvider blocFactories={{ sample: () => new SampleBlocMock() }}>
+      <App />
+    </BlocProvider>
+  )
+
+  await screen.findByText('initial state')
+
+  fireEvent.click(screen.getByText('click'))
+
+  await screen.findByText('not initial state')
+})
