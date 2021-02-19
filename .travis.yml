@@ -10,6 +10,7 @@ cache:
     - node_modules
     - e2e/node_modules
 before_install:
+  - npm run build
   - npm run update-everything
 install:
   - npm run install-everything
