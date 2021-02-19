@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@bloc-arch/react": "file:../bloc-arch-react-1.0.0.tgz",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.7.1",
@@ -20,7 +21,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "preinstall": "npm run build-bloc-react",
+    "build-bloc-react": "cd .. && npm run build && npm pack && cd e2e",
+    "update-tested-package": "npm uninstall @bloc-arch/react && npm run build-bloc-react && npm i ../bloc-arch-react*.tgz",
+    "bloc": "bloc --typescript --path ./src/blocs"
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +44,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@bloc-arch/cli": "^1.0.1"
   }
 }
