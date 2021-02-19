@@ -1,0 +1,17 @@
+sudo: false
+language: node_js
+node_js:
+  - '15'
+branches:
+  only:
+    - master
+cache:
+  directories:
+    - node_modules
+    - e2e/node_modules
+before_install:
+  - npm run update-everything
+install:
+  - npm run install-everything
+script:
+  - npm run test

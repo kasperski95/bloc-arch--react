@@ -1,9 +1,11 @@
 # @bloc-arch/react <!-- omit in toc -->
+![https://travis-ci.com/kasperski95/bloc-arch--react.svg?branch=master](https://travis-ci.com/kasperski95/bloc-arch--react.svg?branch=master)
+
 Package provides hooks and components for BLoC architecture in React. 
 
 ## Table of Contents <!-- omit in toc -->
 - [Related packages](#related-packages)
-- [Example (TypeScript)](#example-typescript)
+- [Setup and Usage Example (TypeScript)](#setup-and-usage-example-typescript)
 - [Docs](#docs)
   - [setupBloc](#setupbloc)
   - [useNewBloc](#usenewbloc)
@@ -17,7 +19,7 @@ Package provides hooks and components for BLoC architecture in React.
 - [@bloc-arch/core](https://www.npmjs.com/package/@bloc-arch/core)
 - [@bloc-arch/cli](https://www.npmjs.com/package/@bloc-arch/cli)
 
-## Example (TypeScript)
+## Setup and Usage Example (TypeScript)
 
 ```tsx
 // src/index.tsx

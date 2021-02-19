@@ -4,7 +4,9 @@
   "description": "Provides components and utils to use BLoC architecture in React.",
   "main": "./dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "update-everything": "npm update && cd e2e && npm update",
+    "install-everything": "npm i && cd e2e && npm i",
+    "test": "cd e2e && npm run test",
     "build": "tsc",
     "prepublish": "npm run build"
   },
@@ -22,5 +24,14 @@
     "@bloc-arch/core": "*",
     "@types/react": "^17.0.2",
     "react": "16.8"
-  }
+  },
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kasperski95/bloc-arch--react.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kasperski95/bloc-arch--react/issues"
+  },
+  "homepage": "https://github.com/kasperski95/bloc-arch--react#readme"
 }

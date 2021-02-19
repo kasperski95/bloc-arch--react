@@ -3,3 +3,5 @@ node_modules/
 .vscode/
 e2e/
 *.tgz
+tsconfig.json
+.DS_Store
