@@ -8,8 +8,8 @@ Package provides hooks and components for BLoC architecture in React.
 - [Setup and Usage Example (TypeScript)](#setup-and-usage-example-typescript)
 - [Docs](#docs)
   - [setupBloc](#setupbloc)
-  - [useNewBloc](#usenewbloc)
-  - [useBlocGetter](#useblocgetter)
+  - [useBloc](#usebloc)
+  - [useWeakBloc](#useweakbloc)
   - [BlocProvider](#blocprovider)
   - [BlocBuilder, useBlocRenderProp](#blocbuilder-useblocrenderprop)
 
@@ -41,7 +41,7 @@ ReactDOM.render(
 // ...
 import { setupBlocs } from '@bloc-arch/react'
 
-export const { BlocProvider, useBlocGetter, useNewBloc } = setupBlocs({
+export const { BlocProvider, useWeakBloc, useBloc } = setupBlocs({
   sample: (dependency: any) => new SampleBloc(dependency),
   // ...
 })
@@ -82,10 +82,10 @@ export class SampleBloc extends Bloc<
 // src/App.tsx
 // ...
 import { BlocBuilder, useBlocRenderProp } from '@bloc-arch/react'
-import { useNewBloc } from './blocs/setup-blocs'
+import { useBloc } from './blocs/setup-blocs'
 
 function App() {
-  const sampleBloc = useNewBloc('sample')('dependency')
+  const sampleBloc = useBloc('sample')('dependency')
 
   return (
     <>
@@ -114,32 +114,32 @@ function App() {
 
 ## Docs
 ### setupBloc
-Takes as an argument object with functions creating blocs and returns **BlocProvider**, **useNewBloc** and **useBlocGetter**.
+Takes as an argument object with functions creating blocs and returns **BlocProvider**, **useBloc** and **useWeakBloc**.
 ```tsx
 // setup blocs:
-const { BlocProvider, useNewBloc, useBlocGetter } = setupBlocs({
+const { BlocProvider, useBloc, useWeakBloc } = setupBlocs({
   sample: () => new SampleBloc()
 })
 ```
 
-### useNewBloc
+### useBloc
 Returns a function to instantiate bloc. Bloc is created only if it doesn't exist. Disposes bloc on component unmount.
 ```tsx
 // setup blocs:
-export const { BlocProvider, useNewBloc } = setupBlocs({
+export const { BlocProvider, useBloc } = setupBlocs({
   //...
   sample: () => new SampleBloc(),
 })
 
 // component:
-const bloc = useNewBloc("sample")()
+const bloc = useBloc("sample")()
 ```
 
-### useBlocGetter
+### useWeakBloc
 Returns a function to get a specified bloc if is available. Bloc is available between the time of creation and disposal.
 ```tsx
 // component:
-const getSampleBloc = useBlocGetter("sample")
+const getSampleBloc = useWeakBloc("sample")
 // ...
 const handleClick = React.useCallback(() => {
   getSampleBloc()?.dispatch(new SampleEvents.Foo())

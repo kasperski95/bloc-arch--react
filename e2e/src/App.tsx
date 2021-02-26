@@ -1,11 +1,11 @@
 import { BlocBuilder, useBlocRenderProp } from '@bloc-arch/react'
 import React from 'react'
 import { SampleEvents, SampleStates } from './blocs/sample'
-import { useBlocGetter, useNewBloc } from './blocs/setup-blocs'
+import { useBloc, useWeakBloc } from './blocs/setup-blocs'
 
 function App() {
-  useNewBloc('sample')()
-  const getSampleBloc = useBlocGetter('sample')
+  useBloc('sample')()
+  const getSampleBloc = useWeakBloc('sample')
 
   return (
     <>
