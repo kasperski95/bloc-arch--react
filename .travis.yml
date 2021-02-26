@@ -15,6 +15,6 @@ install:
   - npm install
   - npm run build
   - npm pack
-  - cd e2e && npm install
+  - cd e2e && npm uninstall @bloc-arch/react && npm install && npm i ../bloc-arch-react*.tgz
 script:
   - npm run test
