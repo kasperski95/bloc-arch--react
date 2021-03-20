@@ -1,6 +1,6 @@
 {
   "name": "@bloc-arch/react",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Provides components and utils to use BLoC architecture in React.",
   "main": "./dist/index.js",
   "scripts": {
