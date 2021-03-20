@@ -5,6 +5,7 @@ import { useBloc, useWeakBloc } from './blocs/setup-blocs'
 
 function App() {
   useBloc('sample')()
+  useBloc('sampleDependency')('foobar', 42)
   const getSampleBloc = useWeakBloc('sample')
 
   return (

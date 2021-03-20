@@ -38,7 +38,7 @@ export function setupBlocs<T extends BlocFactoryFunctions>(blocs: T) {
 
       return React.useCallback(
         (...args: Parameters<T[K]>) => {
-          if (!memoizedBlocs[name]) memoizedBlocs[name] = blocFactoryFn(args)
+          if (!memoizedBlocs[name]) memoizedBlocs[name] = blocFactoryFn(...args)
           return memoizedBlocs[name] as ReturnType<T[K]>
         },
         [name, blocFactoryFn]

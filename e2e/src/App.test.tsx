@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import App from './App'
 import { SampleBloc, SampleStates } from './blocs/sample'
-import { BlocProvider } from './blocs/setup-blocs'
+import { blocFactories, BlocProvider } from './blocs/setup-blocs'
 
 class SampleBlocMock extends SampleBloc {
   async *mapEventToState(event: any) {
@@ -11,7 +11,9 @@ class SampleBlocMock extends SampleBloc {
 
 test('should handle simple use case', async () => {
   render(
-    <BlocProvider blocFactories={{ sample: () => new SampleBlocMock() }}>
+    <BlocProvider
+      blocFactories={{ ...blocFactories, sample: () => new SampleBlocMock() }}
+    >
       <App />
     </BlocProvider>
   )
